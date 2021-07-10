@@ -1,9 +1,11 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "Ks}K(W8T3t8Nkb6";
+$servername = "remotemysql.com";
+$username = "4UWileN0Bu";
+$password = "kzBTjpPpht";
+$database = "4UWileN0Bu";
+$port = "3306";
 
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $database, $port);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
