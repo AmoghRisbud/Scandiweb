@@ -11,15 +11,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "CREATE DATABASE IF NOT EXISTS store";
+// $sql = "CREATE DATABASE IF NOT EXISTS store";
 
-if ($conn->query($sql) === TRUE) {
-    // This if statement is left intentionally blank to display success. 
-} else {
-    echo "Error creating database: " . $conn->error;
-}
+// if ($conn->query($sql) === TRUE) {
+//     // This if statement is left intentionally blank to display success. 
+// } else {
+//     echo "Error creating database: " . $conn->error;
+// }
 
-$conn->select_db("store");
+// $conn->select_db("store");
 
 $sql = "CREATE TABLE IF NOT EXISTS products (
 id INT(9) NOT NULL AUTO_INCREMENT,
