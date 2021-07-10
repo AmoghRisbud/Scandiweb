@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./add-product.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        var furniture = '';
+        var dvd = '';
+        var book = '';
+        var inputValue = '';
+
+        function validate() {
+            var valid = true;
+
+            $('form input').each(function () {
+                var $this = $(this);
+                if (!$this.val()) {
+                    valid = false;
+                    message = 'Please, submit required data';
+                }
+            });
+            if (valid == false) {
+                alert(message);
+                return false;
+            } else {
+                valid = true;
+                $('form input').each(function () {
+                    var $this = $(this);
+                    var inputName = $this.attr('name');
+
+                    if (inputName == 'sku' || inputName == 'name') {
+                        if (!(typeof $this.val() == "string")) {
+                            valid = false;
+                        }
+                    }
+                    if (inputName == 'name') {
+                        var regex = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
+
+                        if (regex.test($this.val()) == false) {
+                            valid = false
+                        }
+                    }
+
+                    if (inputName == 'size' || inputName == 'weight' || inputName == 'price'
+                        || inputName == 'height' || inputName == 'length' || inputName == 'width') {
+                        var regex = /^[+-]?(\d+([.]\d*)?(e[+-]?\d+)?|[.]\d+(e[+-]?\d+)?)/;
+                        if (regex.test($this.val()) == false) {
+                            valid = false;
+                        }
+                    }
+                });
+                if (valid == false) {
+                    alert("Please, provide the data of indicated type");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+        $(document).ready(function () {
+            $('#productType').change(function () {
+                inputValue = $(this).val();
+                furniture = '<h4>Please, Provide dimentions in HxWxL format</h4><label for="height">Height (CM)</label><input type="text" id="height" name ="height"> <br><br><label for="width">Width (CM)</label><input type="text" id="width" name="width"><br><br><label for="length">Length (CM)</label><input type="text" id="length" name="length"><br><br>'
+                dvd = '<h4>Please, Provide size in MB</h4><label for="size">Size (MB)</label><input type="text" id="size" name="size"> <br><br>'
+                book = '<h4>Please, Provide weight in KG</h4><label for="weight">Weight (KG)</label><input type = "text" id = "weight" name = "weight" > <br><br>'
+                if (inputValue == "furniture") {
+                    $(".type").html(furniture);
+                    $("#product_form").attr("action", "furniture.php");
+                }
+                if (inputValue == "book") {
+                    $(".type").html(book);
+                    $("#product_form").attr("action", "book.php");
+                }
+                if (inputValue == "dvd") {
+                    $(".type").html(dvd);
+                    $("#product_form").attr("action", "dvd.php");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header>
+        <h2 class="hero">Product Add</h2>
+        <div class="nav-item">
+            <button type="submit" form="product_form" value="Submit">
+                Save
+            </button>
+            <button onclick="location.href='index.html'">
+                Cancel
+            </button>
+        </div>
+    </header>
+    <hr>
+    <div class="form">
+        <form action="" method="post" id="product_form" name="product" onsubmit="return validate()">
+            <label for="sku">SKU</label>
+            <input type="text" id="sku" name="sku"><br><br>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="price">Price</label>
+            <input type="text" id="price" name="price"><br><br>
+            <label for="typeswitcher">TypeSwitcher</label>
+            <select name="type" id="productType">
+                <option value="">select type</option>
+                <option id="DVD" value="dvd">DVD</option>
+                <option id="Furniture" value="furniture">Furniture</option>
+                <option id="Book" value="book">Book</option>
+            </select>
+            <br><br>
+            <div class="type"></div>
+            <button type="submit" form="product_form" value="Submit">Save</button>
+        </form>
+    </div>
+    <footer>
+        <hr>
+        <h3>Scandiweb Test assignment</h3>
+    </footer>
+</body>
+
+</html>

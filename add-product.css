@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.form{
+width: 90%;
+padding-top: 2%;
+margin: auto;
+}
+header{
+    padding: 0% 5%;
+    display: flex;
+    justify-content: space-between;
+}
+header h2{
+    font: normal 28px "Open Sans", sans-serif;
+}
+hr{
+    width: 90%;
+}
+h4{
+    font: 700 12px "Open Sans", sans-serif;
+}
+header .nav-item{
+    display: flex;
+
+    justify-content: space-between;
+    width: 10%;
+}
+header div button{
+    
+    height: 45%;
+    align-self: center;
+    
+}
+label{
+    font: normal 18px "Open Sans", sans-serif;
+}
+footer{
+    width: 100%;
+  
+    position: absolute;
+    bottom: 0;
+}
+footer h3{
+    font: normal 18px "Open Sans", sans-serif;
+    text-align: center;
+    opacity: 0.9;
+}

@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+header{
+    padding: 0% 5%;
+    display: flex;
+    justify-content: space-between;
+}
+header h2{
+    font: normal 28px "Open Sans", sans-serif;
+}
+hr{
+    width: 90%;
+}
+header .nav-item{
+    display: flex;
+
+    justify-content: space-between;
+    width: 12%;
+}
+header div button{
+    
+    height: 45%;
+    align-self: center;
+}
+
+footer{
+    width: 100%;
+  
+    position: sticky;
+    background-color: white;
+    padding-bottom: 0;
+}
+footer h3{
+   text-align: center;
+   opacity: 0.9;
+   font: normal 18px "Open Sans", sans-serif;
+}
+section{
+    flex: 1;
+    padding: 1% 5% 0% 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.items{
+    height: 200px;
+    border: 1px solid ;
+    padding: 1%;
+    margin: 1%;
+    width:20%;
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.items h4{
+    align-self: center;
+    margin: 5px;
+    font: normal 15px "Open Sans", sans-serif;
+    height: 15px;
+}

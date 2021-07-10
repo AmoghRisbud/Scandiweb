@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#delete-product-btn").click(function () {
+                var selected = $('.delete-checkbox:checkbox:checked').map(function () {
+                    return this.id;
+                }).get();
+                const data = new FormData();
+                var i = 0;
+                selected.forEach(function (value, index, array) {
+                    console.log(value);
+                    data.set('id' + i, value);
+                    i = i + 1;
+                });
+                fetch("backend.php?q=deleteall", {
+                    method: "POST",
+                    body: data
+                }).then(response => response.text().then(function (text) {
+                    console.log(text);
+                    window.location.reload();
+                }))
+            })
+            fetch('backend.php?q=getall')
+                .then(function (response) {
+                    return response.text().then(function (text) {
+                        $('section').html(text)
+                    });
+                });
+        })
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2 class="hero">Product List</h2>
+        <div class="nav-item">
+            <button onclick="location.href='add-product.html'">
+                ADD
+            </button>
+            <button id="delete-product-btn">
+                MASS DELETE
+            </button>
+        </div>
+    </header>
+    <hr>
+    <section>
+        
+    </section>
+    <div class="push"></div>
+    <footer>
+        <hr>
+        <h3>Scandiweb Test assignment</h3>
+    </footer>
+</body>
+
+</html>
